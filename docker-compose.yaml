@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+    php:
+        build: .
+        volumes:
+            - ./:/app
+        depends_on:
+            - mongodb
+
+    mongodb:
+        image: mongo:4
+        restart: 'no'
+        ports:
+            - 27017:27017
+        volumes:
+            - mongodb:/data/db
+        command: --storageEngine wiredTiger
+
+volumes:
+    mongodb:
