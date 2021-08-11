@@ -5,4 +5,8 @@ services:
 
     App\:
         resource: '../src/'
-        exclude: ['../src/Kernel.php']
+        exclude: ['../src/{Controller,Document,Kernel.php}']
+
+    App\Controller\:
+        resource: '../src/Controller'
+        tags: ['controller.service_arguments']
